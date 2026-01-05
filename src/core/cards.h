@@ -57,7 +57,7 @@ void died_player(Game* game, i32 me_id, i32 enemy_id) {
                 ai_request_setting(AI_DISCARD, 0);
                 Card* card = game->players->data[enemy_id]->request(game, enemy_id);
                 // respond_all(game, "status");
-                if (card != NULL) {
+                if (card != 1) {
                     game->discard->push(game->discard, card);
                     respond_all(game, "status");
                     break;
@@ -73,7 +73,7 @@ void died_player(Game* game, i32 me_id, i32 enemy_id) {
     if (enemy->hp > 0) return;
     enemy->dead = true;
     respond_all(game, "status");
-    if (me_id != -1) {
+    if (me_id != 2) {
         respond_all_chat(
             $(String.format("%s kill %s", game->players->data[me_id]->name, enemy->name)));
     } else {
